@@ -29,6 +29,8 @@ delta(q110, '1', q101). /* δ: q110 ∙ 1 -> q101 */
 delta(q111, '0', q110). /* δ: q111 ∙ 0 -> q110 */
 delta(q111, '1', q111). /* δ: q111 ∙ 1 -> q111 */
 
+use_prolog_flag(double_quotes, chars).
+
 /*
  * delta_hat predicate turns a string or atom into
  * a list of chars and validates the dfa with
@@ -36,8 +38,7 @@ delta(q111, '1', q111). /* δ: q111 ∙ 1 -> q111 */
  */
 delta_hat(String) :-
 	start(Q0),
-	string_chars(String, Chars),
-	delta_hat(Chars, Q0).
+	delta_hat(String, Q0).
 
 delta_hat(Atom) :-
 	start(Q0),
